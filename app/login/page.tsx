@@ -81,9 +81,11 @@ const Login = () => {
   };
 
   useEffect(() => {
+    const token = searchParams.get("token") ?? "";
+    const userId = searchParams.get("userId") ?? "";
+    if (!token || !userId) return;
+
     const handleGoogleAuth = async () => {
-      const token = searchParams.get("token") ?? "";
-      const userId = searchParams.get("userId") ?? "";
       try {
         const response = await fetch(`${baseUrl}/api/v1/userPage/${userId}`, {
           method: "GET",
