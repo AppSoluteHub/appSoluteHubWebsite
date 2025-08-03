@@ -6,13 +6,13 @@ import styles from "./team.module.css";
 const Team = () => {
   const teamMembers = [
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
+      name: "Joan",
+      role: "Team Lead",
+      img: "/images/joan.jpg",
     },
     {
       name: "Awele Offor",
-      role: "Social media manager for Appsolute kids",
+      role: "Social media manager",
       img: "/images/awele_offor.jpg",
     },
     {
@@ -21,9 +21,19 @@ const Team = () => {
       img: "/images/akpaVictor.jpg",
     },
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
+      name: "Elijah",
+      role: "Video Editor",
+      img: "/images/elijah.jpg",
+    },
+    {
+      name: "Ahaneku Wisdom",
+      role: "Graphics Designer",
+      img: "/images/ahaneku.jpg",
+    },
+    {
+      name: "Aleke Job",
+      role: "Script Writer",
+      img: "/images/aleke_job.jpg",
     },
     {
       name: "Sochima Onah",
@@ -39,11 +49,6 @@ const Team = () => {
       name: "Solomon Ali",
       role: "Backend Engineer",
       img: "/images/solomon.jpg",
-    },
-    {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
     },
   ];
 

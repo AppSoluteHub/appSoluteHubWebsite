@@ -8,6 +8,7 @@ import TaskSearch from "@/components/searchComp/taskSearch";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import LoadingBar from "../loading";
+import Cookies from "js-cookie";
 
 export interface QuizQuestion {
   id: number;
@@ -32,7 +33,7 @@ const Tasks = () => {
   const [loading, setLoading] = useState(false);
   const [taskList, setTaskList] = useState<Quiz[]>([]);
   const router = useRouter();
-  const url = process.env.NEXT_PUBLIC_URL;
+  const token = Cookies.get("token");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const createTask = () => {
     setAddNew((prev) => !prev);
@@ -46,7 +47,9 @@ const Tasks = () => {
     const fetchTasks = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${baseUrl}/api/v1/tasks`);
+        const response = await fetch(`${baseUrl}/api/v1/tasks`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         console.log(response);
         if (!response.ok) {
           throw new Error("Network response was not ok");
