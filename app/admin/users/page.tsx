@@ -8,6 +8,7 @@ import Image from "next/image";
 import UserSearch from "@/components/searchComp/userSearch";
 import { useSelector } from "react-redux";
 import { getUserToken } from "@/store/userSlice";
+import Cookies from "js-cookie";
 
 interface User {
   id: string;
@@ -128,7 +129,7 @@ const Users = () => {
   const [status, setStatus] = useState("");
   const [userRole, setUserRole] = useState("");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const token = useSelector(getUserToken);
+  const token = Cookies.get("token");
 
   const fetchUsers = async () => {
     try {
