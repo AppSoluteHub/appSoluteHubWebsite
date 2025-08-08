@@ -6,7 +6,7 @@ import styles from "./team.module.css";
 const Team = () => {
   const teamMembers = [
     {
-      name: "Joan",
+      name: "Joan Asako",
       role: "Team Lead",
       img: "/images/joan.jpg",
     },
@@ -21,7 +21,7 @@ const Team = () => {
       img: "/images/akpaVictor.jpg",
     },
     {
-      name: "Elijah",
+      name: "Elijah Olarenwaju",
       role: "Video Editor",
       img: "/images/elijah.jpg",
     },
