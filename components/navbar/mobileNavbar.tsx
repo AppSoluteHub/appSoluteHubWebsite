@@ -77,14 +77,16 @@ const MobileNavbar = () => {
                   onClick={() => router.push("/dashboard")}
                 />
 
-                <Text>Hi, {user?.fullName.split(" ")[0]}</Text>
+                <Text onClick={() => router.push("/dashboard")}>
+                  Hi, {user?.fullName.split(" ")[0]}
+                </Text>
               </Flex>
             ) : (
               <button
                 className={styles.loginBtn}
                 onClick={() => {
-                  router.push("/login");
                   setMobile(!mobile);
+                  router.push("/login");
                 }}
               >
                 Login
