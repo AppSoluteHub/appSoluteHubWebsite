@@ -7,25 +7,9 @@ import styles from "./dash.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { getUser, setUser, updateUser } from "@/store/userSlice";
+import { getUser, updateUser } from "@/store/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-interface UserState {
-  id: string;
-  fullName: string;
-  email: string;
-  profileImage?: string;
-  role?: string;
-  country?: string | null;
-  gender?: string | null;
-  nickName?: string | null;
-  phone?: string | null;
-  verified?: boolean | null;
-  answered?: number | null;
-  totalScore?: number | null;
-  resetToken?: string | number | null;
-  resetTokenExpires?: string | number | null;
-}
 interface TaskProgress {
   completedTasks: number;
   totalTasks: number;
@@ -72,22 +56,22 @@ const Dashboard = () => {
     }
   );
   const [progress, setProgress] = useState<number>(0);
-  const [users, setTheUser] = useState<UserState>({
-    id: "",
-    fullName: "",
-    email: "",
-    profileImage: "",
-    role: "",
-    country: null,
-    gender: null,
-    nickName: null,
-    phone: null,
-    verified: null,
-    answered: null,
-    totalScore: null,
-    resetToken: null,
-    resetTokenExpires: null,
-  });
+  // const [users, setTheUser] = useState<UserState>({
+  //   id: "",
+  //   fullName: "",
+  //   email: "",
+  //   profileImage: "",
+  //   role: "",
+  //   country: null,
+  //   gender: null,
+  //   nickName: null,
+  //   phone: null,
+  //   verified: null,
+  //   answered: null,
+  //   totalScore: null,
+  //   resetToken: null,
+  //   resetTokenExpires: null,
+  // });
   const user = useSelector(getUser);
   const [loading, setLoading] = useState(false);
 
@@ -198,11 +182,12 @@ const Dashboard = () => {
         const data = await response.json();
         dispatch(
           updateUser({
+            message: "",
             token: data.token,
             data: data.user,
           })
         );
-        setTheUser(data.data);
+        console.log("user:", data.data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
         console.error("Error fetching user data:", error);
