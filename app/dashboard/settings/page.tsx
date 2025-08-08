@@ -76,7 +76,6 @@ const Settings = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      console.log(data);
       setUser(data.data);
     } catch (error) {
       console.error("Error fetching user data:", error);

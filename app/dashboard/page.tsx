@@ -184,10 +184,9 @@ const Dashboard = () => {
           updateUser({
             message: "",
             token: data.token,
-            data: data.user,
+            data: data.data,
           })
         );
-        console.log("user:", data.data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
         console.error("Error fetching user data:", error);
