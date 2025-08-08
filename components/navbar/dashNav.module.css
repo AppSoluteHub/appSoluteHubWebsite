@@ -27,7 +27,7 @@
   .drawer {
     position: relative;
     display: flex;
-    height: 90vh;
+    height: 82vh;
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
