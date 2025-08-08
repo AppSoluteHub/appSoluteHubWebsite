@@ -150,15 +150,28 @@ const Navbar = () => {
                       width={50}
                       height={50}
                       className={styles.userImg}
-                      onClick={() => router.push("/dashboard")}
+                      onClick={() => {
+                        router.push("/dashboard");
+                        setMobile(!mobile);
+                      }}
                     />
 
-                    <Text>Hi, {user?.fullName.split(" ")[0]}</Text>
+                    <Text
+                      onClick={() => {
+                        router.push("/dashboard");
+                        setMobile(!mobile);
+                      }}
+                    >
+                      Hi, {user?.fullName.split(" ")[0]}
+                    </Text>
                   </Flex>
                 ) : (
                   <button
                     className={styles.loginBtn}
-                    onClick={() => router.push("/login")}
+                    onClick={() => {
+                      router.push("/login");
+                      setMobile(!mobile);
+                    }}
                   >
                     Login
                   </button>

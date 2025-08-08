@@ -74,9 +74,9 @@ const Login = () => {
       );
       const redirectTo = searchParams.get("redirectTo");
       if (redirectTo === "/") {
-        router.push("/dashboard");
+        router.replace("/dashboard");
       } else {
-        router.push(redirectTo || "/dashboard");
+        router.replace(redirectTo || "/dashboard");
       }
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
