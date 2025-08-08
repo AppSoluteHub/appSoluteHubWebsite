@@ -4,7 +4,7 @@ import { RootState } from "./store";
 interface UserState {
   message?: string;
   token: string;
-  user: {
+  data: {
     id: string;
     fullName: string;
     email: string;
@@ -25,7 +25,7 @@ interface UserState {
 const initialState: UserState = {
   message: "",
   token: "",
-  user: {
+  data: {
     id: "",
     fullName: "",
     email: "",
@@ -50,7 +50,7 @@ const userSlice = createSlice({
     setUser: (state, action: PayloadAction<UserState>) => {
       state.message = action.payload.message;
       state.token = action.payload.token;
-      state.user = action.payload.user;
+      state.data = action.payload.data;
     },
     updateUser: (state, action: PayloadAction<Partial<UserState>>) => {
       if (action.payload.message !== undefined) {
@@ -59,14 +59,14 @@ const userSlice = createSlice({
       if (action.payload.token !== undefined) {
         state.token = action.payload.token;
       }
-      if (action.payload.user !== undefined) {
-        state.user = { ...state.user, ...action.payload.user };
+      if (action.payload.data !== undefined) {
+        state.data = { ...state.data, ...action.payload.data };
       }
     },
     clearUser: (state) => {
       state.message = "";
       state.token = "";
-      state.user = {
+      state.data = {
         id: "",
         fullName: "",
         email: "",
@@ -87,7 +87,7 @@ const userSlice = createSlice({
 });
 
 export const getUserToken = (state: RootState) => state.user.token;
-export const getUser = (state: RootState) => state.user.user;
+export const getUser = (state: RootState) => state.user.data;
 
 export const { setUser, updateUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;

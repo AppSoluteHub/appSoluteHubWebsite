@@ -66,7 +66,7 @@ const MobileNavbar = () => {
               ))}
             </ul>
 
-            {user?.email ? (
+            {user.email ? (
               <Flex gap={10} align="center">
                 <Image
                   src={user?.profileImage || "/images/userProfile.png"}
@@ -82,7 +82,10 @@ const MobileNavbar = () => {
             ) : (
               <button
                 className={styles.loginBtn}
-                onClick={() => router.push("/login")}
+                onClick={() => {
+                  router.push("/login");
+                  setMobile(!mobile);
+                }}
               >
                 Login
               </button>

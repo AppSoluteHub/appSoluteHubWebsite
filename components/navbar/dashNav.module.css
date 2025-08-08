@@ -24,6 +24,15 @@
     aspect-ratio: 1/1;
   }
 
+  .drawer {
+    position: relative;
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+  }
+
   .navLinks {
     display: flex;
     flex-direction: column;
@@ -50,10 +59,25 @@
     color: #34449c;
   }
 
+  .logoutBtn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 42px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    background-color: #34459c !important;
+  }
+
   .sideText {
-    color: #34449c;
+    color: #ffffff;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px !important;
   }
 }

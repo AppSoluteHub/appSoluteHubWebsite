@@ -119,6 +119,9 @@ const Settings = () => {
   };
 
   const updateUser = async () => {
+    if (!fullName || !nickName || !email || !phone || !gender || !country)
+      return;
+
     setLoading(true);
     try {
       const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
@@ -257,14 +260,14 @@ const Settings = () => {
                 <TextInput
                   disabled
                   label="Full Name"
-                  placeholder="Sochima Onah"
+                  placeholder=""
                   value={user.fullName}
                   className={styles.formInput}
                 />
                 <TextInput
                   disabled
                   label="Nick Name"
-                  placeholder="Sochima"
+                  placeholder=""
                   value={user.nickName ?? ""}
                   className={styles.formInput}
                 />
@@ -275,7 +278,7 @@ const Settings = () => {
                   type="email"
                   disabled
                   label="Email"
-                  placeholder="sochimaonah@gmail.com"
+                  placeholder=""
                   value={user.email}
                   className={styles.formInput}
                 />
@@ -329,14 +332,14 @@ const Settings = () => {
               <Flex className={styles.formFlex}>
                 <TextInput
                   label="Full Name"
-                  placeholder="Sochima Onah"
+                  placeholder={user.fullName}
                   value={fullName}
                   onChange={(e) => setFullName(e.currentTarget.value)}
                   className={styles.formInput}
                 />
                 <TextInput
                   label="Nick Name"
-                  placeholder="Sochima"
+                  placeholder={user.nickName}
                   value={nickName}
                   onChange={(e) => setNickName(e.currentTarget.value)}
                   className={styles.formInput}
@@ -347,7 +350,7 @@ const Settings = () => {
                 <TextInput
                   type="email"
                   label="Email"
-                  placeholder="sochimaonah@gmail.com"
+                  placeholder={user.email}
                   value={email}
                   onChange={(e) => setEmail(e.currentTarget.value)}
                   className={styles.formInput}
@@ -355,7 +358,7 @@ const Settings = () => {
                 <TextInput
                   type="number"
                   label="Phone Number"
-                  placeholder="0816581xxxx"
+                  placeholder={user.phone}
                   value={phone}
                   onChange={(e) => setPhone(e.currentTarget.value)}
                   className={styles.formInput}
