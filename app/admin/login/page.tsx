@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { setUser } from "@/store/userSlice";
+import { updateUser } from "@/store/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,10 +41,10 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
       dispatch(
-        setUser({
+        updateUser({
           message: data.message,
           token: data.token,
-          user: data.user,
+          data: data.user,
         })
       );
       Cookies.set("token", data.token, { expires: 7 });

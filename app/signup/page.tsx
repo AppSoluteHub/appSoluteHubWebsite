@@ -86,36 +86,6 @@ const SignUp = () => {
     Cookies.set("token", token, { expires: 7 });
     Cookies.set("userId", userId ?? "", { expires: 7 });
     router.push("/dashboard");
-
-    // const handleGoogleAuth = async () => {
-    //   try {
-    //     const response = await fetch(`${baseUrl}/api/v1/userPage/${userId}`, {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     });
-
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-
-    //     const data = await response.json();
-    //     Cookies.set("token", data.token, { expires: 7 });
-    //     Cookies.set("userId", data.user.id, { expires: 7 });
-    //     Cookies.set("role", data.user.role, { expires: 7 });
-    //     dispatch(setUser(data));
-    //     router.push("/dashboard");
-    //   } catch (error) {
-    //     console.error("There was a problem with the fetch operation:", error);
-    //     setError("Login failed. Please check your credentials and try again.");
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
-
-    // handleGoogleAuth();
   }, [searchParams]);
 
   const xIcon = <IconX size={20} />;
