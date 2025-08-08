@@ -7,8 +7,8 @@ import styles from "./dash.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { setUser } from "@/store/userSlice";
-import { useDispatch } from "react-redux";
+import { getUser, setUser, updateUser } from "@/store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 interface UserState {
   id: string;
@@ -72,7 +72,7 @@ const Dashboard = () => {
     }
   );
   const [progress, setProgress] = useState<number>(0);
-  const [user, setTheUser] = useState<UserState>({
+  const [users, setTheUser] = useState<UserState>({
     id: "",
     fullName: "",
     email: "",
@@ -88,6 +88,7 @@ const Dashboard = () => {
     resetToken: null,
     resetTokenExpires: null,
   });
+  const user = useSelector(getUser);
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -195,9 +196,13 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        dispatch(setUser(data.data));
+        dispatch(
+          updateUser({
+            token: data.token,
+            data: data.user,
+          })
+        );
         setTheUser(data.data);
-        console.log(data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
         console.error("Error fetching user data:", error);
