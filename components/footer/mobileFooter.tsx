@@ -15,7 +15,9 @@ const MobileFooter = () => {
       <Flex className={styles.top}>
         <Stack className={styles.logoBox}>
           <AppSoluteLogo color="#ffffff" logoColor="white" />
-          <Text className={styles.logoText}>Lorem ipsum dolor sit amet</Text>
+          <Text className={styles.logoText}>
+            Innovating the Future, One Solution at a Time
+          </Text>
         </Stack>
         <Flex className={styles.group}>
           <Stack className={styles.list}>
